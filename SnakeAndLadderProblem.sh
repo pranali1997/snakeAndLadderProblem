@@ -6,8 +6,8 @@ echo "WELCOME TO SNAKE AND LADDER GAME"
 position=0
 counter=0
 
-while [ $position -lt 100 ]
-do
+function getOnePlayer()
+{
 	optionsValue=$(((RANDOM%3)+1))
 	dieValue=$(((RANDOM%6)+1))
 
@@ -25,6 +25,12 @@ do
 		then
 			position=$(($position-$dieValue))
 		fi
+
 	counter=$(($counter+1))
 	echo $counter"	" $position
+}
+
+while [ $position -lt 100 ]
+do
+	getOnePlayer
 done
