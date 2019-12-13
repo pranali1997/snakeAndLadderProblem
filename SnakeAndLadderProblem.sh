@@ -19,5 +19,9 @@ do
 		then
 			position=0
 		fi
+		if [ $position -gt 100 ]
+		then
+			position=$(($position-$dieValue))
+		fi
 	echo $position
 done
