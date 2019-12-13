@@ -3,6 +3,7 @@ echo "WELCOME TO SNAKE AND LADDER GAME"
 
 #variable
 position=0
+counter=0
 
 while [ $position -lt 100 ]
 do
@@ -23,5 +24,6 @@ do
 		then
 			position=$(($position-$dieValue))
 		fi
-	echo $position
+	counter=$(($counter+1))
+	echo $counter"	" $position
 done
