@@ -39,37 +39,25 @@ function getWinner()
 
 	playerPosition1=0
 	playerPosition2=0
-	nextPlayer=1
 	dieCount=0
 
 	while [ $playerPosition1 -lt $MAX_POSITION ] && [ $playerPosition2 -lt $MAX_POSITION ]
 	do
-		if [ $nextPlayer -eq 1 ]
+		playerPosition1=$(getPositionValue $playerPosition1)
+		if [ $playerPosition1 -ge $MAX_POSITION ]
 		then
-			playerPosition1=$( getPositionValue $playerPosition1)
-			echo "player1 position: "$playerPosition1
-			if [ $playerPosition1 -eq $MAX_POSITION ]
-			then
-				echo "Player1 wins"
-			else
-				nextPlayer=0
-			fi
-			dieCount=$(($dieCount+1))
-
-		else
-			playerPosition2=$( getPositionValue $playerPosition2)
-			echo "player2 position: "$playerPosition2
-			if [ $playerPosition2 -eq $MAX_POSITION ]
-			then
-				echo "Player2 wins"
-			else
-				nextPlayer=1
-			fi
+			echo "Player1 wins"
+			break
 		fi
-
+		dieCount=$(($dieCount+1))
+		playerPosition2=$(getPositionValue $playerPosition2)
+		if [ $playerPosition2 -ge $MAX_POSITION ]
+		then
+			echo "Player2 wins"
+			break
+		fi
 		dieCount=$(($dieCount+1))
 	done
 
-	echo "number of times die was rolled :" $dieCount
 }
 getWinner
